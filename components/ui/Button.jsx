@@ -2,11 +2,18 @@ import Link from "next/link";
 
 import styles from "./Button.module.css";
 
-function Button({ link, children }) {
+function Button({ link, children, onClick }) {
+  if (link) {
+    return (
+      <Link href={link}>
+        <a className={styles.btn}>{children} </a>
+      </Link>
+    );
+  }
   return (
-    <Link href={link}>
-      <a className={styles.btn}>{children} </a>
-    </Link>
+    <button className={styles.btn} onClick={onClick}>
+      {children}
+    </button>
   );
 }
 
